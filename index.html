@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>To Iya</title>
+    <style>
+      body {
+        margin: 0;
+        height: 100vh;
+        font-family: "Poppins", sans-serif;
+        background: linear-gradient(160deg, #a1b6ff, #c3b8ff, #e0e6ff);
+        overflow: hidden;
+        color: #f5f5f5;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        text-align: center;
+      }
+
+      h1 {
+        font-family: "Dancing Script", cursive;
+        font-size: 2.5em;
+        margin-bottom: 20px;
+        color: #ffffff;
+        text-shadow: 0 0 10px rgba(255, 255, 255, 0.4);
+      }
+
+      .message {
+        max-width: 600px;
+        font-size: 1.1em;
+        opacity: 0;
+        transition: opacity 2s ease-in;
+        line-height: 1.6em;
+      }
+
+      .tulip {
+        opacity: 0;
+        width: 150px;
+        height: 150px;
+        margin-top: 50px;
+        transition: opacity 3s ease-in;
+      }
+
+      /* Simple floating glow effect */
+      .glow {
+        position: absolute;
+        width: 2px;
+        height: 2px;
+        background: rgba(255, 255, 255, 0.6);
+        border-radius: 50%;
+        animation: float 10s linear infinite;
+      }
+
+      @keyframes float {
+        0% {
+          transform: translateY(100vh) scale(0);
+          opacity: 0;
+        }
+        10% {
+          opacity: 1;
+        }
+        90% {
+          opacity: 1;
+        }
+        100% {
+          transform: translateY(-10vh) scale(1);
+          opacity: 0;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <audio autoplay loop>
+      <source
+        src="https://cdn.pixabay.com/download/audio/2023/03/06/audio_b0a1b38a65.mp3?filename=piano-ambient-14471.mp3"
+        type="audio/mpeg"
+      />
+    </audio>
+
+    <h1>To Iyaaaaa</h1>
+
+    <div class="message" id="line1">
+      I know that when I decided to confess. I also accepted the risk of losing
+      what we already had, but I chose to be honest anyway, because silence
+      would’ve been a heavier kind of regret.
+    </div>
+
+    <div class="message" id="line2">
+      I understand the walls you’ve built, and the quiet distance you keep to
+      protect your peace. You’ve been hurt before, and I would never ask you to
+      rush your healing.
+    </div>
+
+    <div class="message" id="line3">
+      I just hope, in time, you’ll see that not everyone who reaches for you
+      intends to hurt you. Some simply want to bring calm, not chaos. Comfort,
+      not confusion.
+    </div>
+
+    <div class="message" id="line4">
+      If I ever get the chance to stay, even for a little while, I’d rather show
+      you what consistency and patience feel like, not through promises, but
+      through actions that don’t need to be explained.
+    </div>
+
+    <div class="message" id="line5">
+      I’m not asking for certainty, or anything in return just the chance to
+      prove that some intentions can feel safe, and that some risks are still
+      worth taking.
+    </div>
+
+    <div class="message" id="line6">
+      I understand that you don’t want something like this right now, and that’s
+      okay. I’m just here... no pressure, no expectations... hoping that one
+      day, you’ll see I was always coming from a good place.
+    </div>
+
+    <img
+      src="https://i.pinimg.com/736x/ee/fb/ef/eefbef3b5c4823a26374a64a91c1df25.jpg"
+      alt="Tulip"
+      class="tulip"
+      id="tulip"
+    />
+
+    <script>
+      const lines = document.querySelectorAll(".message");
+      const tulip = document.getElementById("tulip");
+
+      let delay = 0;
+      lines.forEach((line, index) => {
+        setTimeout(() => {
+          line.style.opacity = 1;
+        }, delay);
+        delay += 7000; // 5 seconds between each line
+      });
+
+      // Show tulip after all lines
+      setTimeout(() => {
+        tulip.style.opacity = 1;
+      }, delay + 2000);
+
+      // Generate gentle floating glow particles
+      for (let i = 0; i < 40; i++) {
+        const glow = document.createElement("div");
+        glow.className = "glow";
+        glow.style.left = Math.random() * 100 + "vw";
+        glow.style.animationDuration = 6 + Math.random() * 8 + "s";
+        glow.style.animationDelay = Math.random() * 5 + "s";
+        document.body.appendChild(glow);
+      }
+    </script>
+  </body>
+</html>
