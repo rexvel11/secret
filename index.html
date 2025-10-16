@@ -5,45 +5,56 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>To Iya</title>
     <style>
+      * {
+        box-sizing: border-box;
+      }
+
       body {
         margin: 0;
-        height: 100vh;
+        min-height: 100vh;
         font-family: "Poppins", sans-serif;
         background: linear-gradient(160deg, #a1b6ff, #c3b8ff, #e0e6ff);
-        overflow: hidden;
+        overflow-x: hidden;
         color: #f5f5f5;
         display: flex;
         justify-content: center;
         align-items: center;
         flex-direction: column;
         text-align: center;
+        padding: 20px;
       }
 
       h1 {
         font-family: "Dancing Script", cursive;
-        font-size: 2.5em;
+        font-size: 2.5rem;
         margin-bottom: 20px;
         color: #ffffff;
         text-shadow: 0 0 10px rgba(255, 255, 255, 0.4);
+        word-wrap: break-word;
       }
 
       .message {
-        max-width: 600px;
-        font-size: 1.1em;
+        max-width: 700px;
+        width: 100%;
+        font-size: 1.1rem;
         opacity: 0;
         transition: opacity 2s ease-in;
-        line-height: 1.6em;
+        line-height: 1.7em;
+        margin-bottom: 1.2rem;
+        padding: 0 10px;
       }
 
       .tulip {
         opacity: 0;
         width: 150px;
-        height: 150px;
-        margin-top: 50px;
+        height: auto;
+        margin-top: 40px;
+        border-radius: 10px;
         transition: opacity 3s ease-in;
+        max-width: 60%;
       }
 
-      /* Simple floating glow effect */
+      /* Floating glow effect */
       .glow {
         position: absolute;
         width: 2px;
@@ -69,20 +80,49 @@
           opacity: 0;
         }
       }
+
+      /* ===================== */
+      /* RESPONSIVE ADJUSTMENTS */
+      /* ===================== */
+
+      @media (max-width: 768px) {
+        h1 {
+          font-size: 2rem;
+        }
+
+        .message {
+          font-size: 1rem;
+          line-height: 1.6em;
+        }
+
+        .tulip {
+          width: 120px;
+          margin-top: 30px;
+        }
+      }
+
+      @media (max-width: 480px) {
+        h1 {
+          font-size: 1.8rem;
+        }
+
+        .message {
+          font-size: 0.95rem;
+          line-height: 1.5em;
+        }
+
+        .tulip {
+          width: 100px;
+          margin-top: 25px;
+        }
+      }
     </style>
   </head>
   <body>
-    <audio autoplay loop>
-      <source
-        src="https://cdn.pixabay.com/download/audio/2023/03/06/audio_b0a1b38a65.mp3?filename=piano-ambient-14471.mp3"
-        type="audio/mpeg"
-      />
-    </audio>
-
-    <h1>To Iyaaaaa</h1>
+    <h1>To Iya</h1>
 
     <div class="message" id="line1">
-      I know that when I decided to confess. I also accepted the risk of losing
+      I know that when I decided to confess, I also accepted the risk of losing
       what we already had, but I chose to be honest anyway, because silence
       would’ve been a heavier kind of regret.
     </div>
@@ -101,20 +141,20 @@
 
     <div class="message" id="line4">
       If I ever get the chance to stay, even for a little while, I’d rather show
-      you what consistency and patience feel like, not through promises, but
+      you what consistency and patience feels like... not through promises, but
       through actions that don’t need to be explained.
     </div>
 
     <div class="message" id="line5">
-      I’m not asking for certainty, or anything in return just the chance to
+      I’m not asking for certainty, or anything in return... just the chance to
       prove that some intentions can feel safe, and that some risks are still
       worth taking.
     </div>
 
     <div class="message" id="line6">
       I understand that you don’t want something like this right now, and that’s
-      okay. I’m just here... no pressure, no expectations... hoping that one
-      day, you’ll see I was always coming from a good place.
+      okay. I’m just here... not to prove anything, but to show you that care
+      can exist without conditions.
     </div>
 
     <img
@@ -129,19 +169,19 @@
       const tulip = document.getElementById("tulip");
 
       let delay = 0;
-      lines.forEach((line, index) => {
+      lines.forEach((line) => {
         setTimeout(() => {
           line.style.opacity = 1;
         }, delay);
-        delay += 7000; // 5 seconds between each line
+        delay += 7000; // 7 seconds between lines
       });
 
-      // Show tulip after all lines
+      // Show tulip after all lines fade in
       setTimeout(() => {
         tulip.style.opacity = 1;
       }, delay + 2000);
 
-      // Generate gentle floating glow particles
+      // Floating glow particles
       for (let i = 0; i < 40; i++) {
         const glow = document.createElement("div");
         glow.className = "glow";
