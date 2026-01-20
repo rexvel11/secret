@@ -4,6 +4,19 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>To My Baby</title>
+
+    <link
+      rel="icon"
+      type="image/png"
+      href="https://i.pinimg.com/736x/ee/fb/ef/eefbef3b5c4823a26374a64a91c1df25.jpg"
+    />
+
+    <!-- Google Fonts -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins&family=Dancing+Script&display=swap"
+      rel="stylesheet"
+    />
+
     <style>
       * {
         box-sizing: border-box;
@@ -30,7 +43,6 @@
         margin-bottom: 20px;
         color: #ffffff;
         text-shadow: 0 0 10px rgba(255, 255, 255, 0.4);
-        word-wrap: break-word;
       }
 
       .message {
@@ -41,27 +53,26 @@
         transition: opacity 2s ease-in;
         line-height: 1.7em;
         margin-bottom: 1.2rem;
-        padding: 0 10px;
       }
 
       .tulip {
         opacity: 0;
         width: 150px;
-        height: auto;
         margin-top: 40px;
         border-radius: 10px;
         transition: opacity 3s ease-in;
         max-width: 60%;
       }
 
-      /* Floating glow effect */
+      /* Floating glow */
       .glow {
-        position: absolute;
+        position: fixed;
         width: 2px;
         height: 2px;
         background: rgba(255, 255, 255, 0.6);
         border-radius: 50%;
         animation: float 10s linear infinite;
+        pointer-events: none;
       }
 
       @keyframes float {
@@ -81,23 +92,82 @@
         }
       }
 
-      /* ===================== */
-      /* RESPONSIVE ADJUSTMENTS */
-      /* ===================== */
+      /* Flower button */
+      .flower-btn {
+        margin-top: 2rem;
+        padding: 12px 32px;
+        font-size: 1rem;
+        font-family: "Dancing Script", cursive;
+        background: rgba(255, 182, 193, 0.7);
+        color: #ffffff;
+        border: 2px solid rgba(255, 255, 255, 0.5);
+        border-radius: 50px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        backdrop-filter: blur(10px);
+        text-shadow: 0 0 8px rgba(255, 182, 193, 0.5);
+      }
+
+      .flower-btn:hover {
+        background: rgba(255, 182, 193, 0.9);
+        transform: scale(1.05);
+        box-shadow: 0 0 20px rgba(255, 182, 193, 0.6);
+      }
+
+      /* Flower burst */
+      .flower {
+        position: fixed;
+        pointer-events: none;
+        font-size: 3rem;
+        animation: flowerBurst 1.2s ease-out forwards;
+      }
+
+      @keyframes flowerBurst {
+        0% {
+          transform: translate(0, 0) scale(0);
+          opacity: 1;
+        }
+        100% {
+          transform: translate(var(--tx), var(--ty)) scale(1);
+          opacity: 0;
+        }
+      }
+
+      /* Glow pulse */
+      .glow-pulse {
+        position: fixed;
+        pointer-events: none;
+        border-radius: 50%;
+        background: radial-gradient(
+          circle,
+          rgba(255, 182, 193, 0.4) 0%,
+          transparent 70%
+        );
+        animation: pulse 1.5s ease-out forwards;
+      }
+
+      @keyframes pulse {
+        from {
+          width: 20px;
+          height: 20px;
+          opacity: 1;
+        }
+        to {
+          width: 300px;
+          height: 300px;
+          opacity: 0;
+        }
+      }
 
       @media (max-width: 768px) {
         h1 {
           font-size: 2rem;
         }
-
         .message {
           font-size: 1rem;
-          line-height: 1.6em;
         }
-
         .tulip {
           width: 120px;
-          margin-top: 30px;
         }
       }
 
@@ -105,43 +175,36 @@
         h1 {
           font-size: 1.8rem;
         }
-
         .message {
           font-size: 0.95rem;
-          line-height: 1.5em;
         }
-
         .tulip {
           width: 100px;
-          margin-top: 25px;
         }
       }
     </style>
   </head>
-  <body>
-    <h1>Happy 1st monthsary, babyyy🤍</h1>
 
-    <div class="message" id="line1">
-      It might just be one month, but I’m really grateful for everything we’ve
+  <body>
+    <h1>Happy 1st monthsary, babyyy 🤍</h1>
+
+    <div class="message">
+      It might just be one month, but I'm really grateful for everything we've
       shared so far.
     </div>
-
-    <div class="message" id="line2">
-      The laughs, the quiet moments, the time we choose to give each other.
+    <div class="message">
+      The laughs, the quiet moments, and the time we choose to give each other.
     </div>
-
-    <div class="message" id="line3">
+    <div class="message">
       I appreciate you, your presence, and the way you make things feel light
       and warm. No pressure, no rush.
     </div>
-
-    <div class="message" id="line4">
-      I’m just happy to be here with you, getting to know you more every day.
+    <div class="message">
+      I'm just happy to be here with you, getting to know you more every day.
     </div>
-
-    <div class="message" id="line5">
-      Thank you for choosing me, even in your own way. Here’s to more moments,
-      more memories, and more time together
+    <div class="message">
+      Thank you for choosing me, even in your own way. Here's to more moments,
+      more memories, and more time together.
     </div>
 
     <img
@@ -154,16 +217,16 @@
     <script>
       const lines = document.querySelectorAll(".message");
       const tulip = document.getElementById("tulip");
+      const flowerBtn = document.getElementById("flowerBtn");
 
       let delay = 0;
       lines.forEach((line) => {
         setTimeout(() => {
           line.style.opacity = 1;
         }, delay);
-        delay += 6000; // 7 seconds between lines
+        delay += 6000;
       });
 
-      // Show tulip after all lines fade in
       setTimeout(() => {
         tulip.style.opacity = 1;
       }, delay + 2000);
@@ -177,6 +240,37 @@
         glow.style.animationDelay = Math.random() * 5 + "s";
         document.body.appendChild(glow);
       }
+
+      // Flower button click
+      flowerBtn.addEventListener("click", () => {
+        const rect = flowerBtn.getBoundingClientRect();
+        const centerX = rect.left + rect.width / 2;
+        const centerY = rect.top + rect.height / 2;
+
+        const glowPulse = document.createElement("div");
+        glowPulse.className = "glow-pulse";
+        glowPulse.style.left = centerX + "px";
+        glowPulse.style.top = centerY + "px";
+        document.body.appendChild(glowPulse);
+
+        for (let i = 0; i < 12; i++) {
+          const flower = document.createElement("div");
+          flower.className = "flower";
+          flower.textContent = "🌹";
+
+          const angle = (i / 12) * Math.PI * 2;
+          const distance = 150;
+          flower.style.left = centerX + "px";
+          flower.style.top = centerY + "px";
+          flower.style.setProperty("--tx", Math.cos(angle) * distance + "px");
+          flower.style.setProperty("--ty", Math.sin(angle) * distance + "px");
+
+          document.body.appendChild(flower);
+          setTimeout(() => flower.remove(), 1200);
+        }
+
+        setTimeout(() => glowPulse.remove(), 1500);
+      });
     </script>
   </body>
 </html>
